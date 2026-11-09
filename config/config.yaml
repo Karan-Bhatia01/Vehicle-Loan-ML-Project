@@ -1,15 +1,9 @@
 data:
   raw_path: dataset/train.csv
-  processed_dir: dataset/processed
-  files:
-    loan: loan_details.csv
-    customer: customer_profile.csv
-    bureau: bureau_history.csv
-    risk: engineered_risk.csv
 
 features:
   target_col: loan_default
-  drop_from_features: [loan_default, asset_cost, customer_id]
+  drop_from_features: [loan_default, asset_cost, loan_id]
   cat_cols: [branch_id, supplier_id, manufacturer_id, pincode_id, state_id, employee_id]
   skewed_cols: [disbursed_amount, total_current_balance, total_sanctioned_amount]
   cols_to_drop:

@@ -1,6 +1,10 @@
 antigravity
 .env
-
 scripts
-
 loan_venv
+
+__pycache__/
+*.pyc
+catboost_info/
+
+interview_prep.txt

@@ -2,13 +2,12 @@
 import sys
 from pathlib import Path
 
-import streamlit as st
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import pandas as pd
-import numpy as np
+import streamlit as st
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
-
+from src.config import PROJECT_ROOT
 from src.inference.predict import load_pipeline, predict
 
 # --- Page config ---
@@ -195,7 +194,7 @@ if submitted:
     decision = result["decision"][0]
     threshold = result["threshold"]
 
-    # Determine risk tier
+    # Anything within 30% below the reject threshold goes to manual review.
     if prob < threshold * 0.7:
         tier, css_class, label = "Low Risk", "verdict-approve", "Approve"
     elif prob < threshold:
